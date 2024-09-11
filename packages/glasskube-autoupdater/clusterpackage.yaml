@@ -1,0 +1,12 @@
+apiVersion: packages.glasskube.dev/v1alpha1
+kind: ClusterPackage
+metadata:
+  name: glasskube-autoupdater
+spec:
+  packageInfo:
+    name: glasskube-autoupdater
+    repositoryName: glasskube
+    version: v0.14.0+1
+  values:
+    schedule:
+      value: 0 0 * * *
