@@ -8,10 +8,10 @@ Use this repository as a template to get started with ArgoCD & Glasskube in minu
 
 #### Access to an empty Kubernetes cluster
 
-The easiest would be creating a new [Minikube](https://minikube.sigs.k8s.io/docs/start/) cluster with:
+The easiest would be creating a new [Kind](https://kind.sigs.k8s.io/) cluster with:
 
 ```shell
-minikube start -p gitops
+make kind-create-cluster
 ````
 Glasskube should not yet be bootstrapped in that cluster
 
