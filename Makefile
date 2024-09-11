@@ -1,5 +1,6 @@
 # Project Setup
-PROJECT_NAME := glasskube-gitops
+PROJECT_NAME := glasskube-gitops2
+URL := https://github.com/thatmlopsguy/kind-gitops-glasskube
 
 all: help
 
@@ -21,3 +22,17 @@ kind-delete-cluster: ## Delete kind cluster
 	@if [ "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
 		kind delete cluster --name=$(PROJECT_NAME) || true; \
 	fi
+
+##@ Grasskube
+grasskube-bootstrap: ## Grasskube bootstrap
+	glasskube bootstrap git --url $(URL)
+
+grasskube-serve: ## Grasskube serve
+	glasskube serve
+
+##@ Argo
+argo-cd-ui: ## Access argocd ui
+	@kubectl port-forward svc/argocd-server -n argocd 8088:443
+
+argo-cd-password: ## Get argocd password
+	@kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
