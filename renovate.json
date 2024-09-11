@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "glasskube": {
+    "fileMatch": [
+      ".+\\.(yaml)|(yml)$"
+    ]
+  },
+  "automerge": true,
+  "ignoreTests": true
+}
